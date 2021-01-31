@@ -33,6 +33,8 @@ Pages Package contain all element of screen wise.
 Tests package keep all the test cases.
 TestNG framework have been used to create prerequiste, Test and postrequisite.
 
+ExtentReport Folder will contains latest run generated report.
+
 Resource folder contain .apk application to be installed on device and Excel where we can keep the data to use as test script prerequiste.
 
 EXCECUTION
