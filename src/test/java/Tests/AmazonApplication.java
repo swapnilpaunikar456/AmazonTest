@@ -1,9 +1,11 @@
 package Tests;
 
+import Actions.Action;
 import BaseUtility.MobileBaseUtility;
 import BaseUtility.ReadFromExcel;
 import Pages.LoginPage;
 import Pages.SearchResult;
+import genralized_utillity.ExtentReport.ExtentTestManager;
 import genralized_utillity.Log4j.Log;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -11,16 +13,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AmazonApplication extends MobileBaseUtility {
 
-    private String itemValue = null;
-    private String username = "abc@gmail.com";
-    private String password = "password";
+    List<String> data = new ArrayList<>();
 
     /*
-    *This method read  input form given external source
-    */
+     *This method read  input form given external source
+     */
     @BeforeMethod
     public void setup() throws IOException {
 
@@ -34,15 +37,18 @@ public class AmazonApplication extends MobileBaseUtility {
 
         //Call read file method of the class to read data
 
-        itemValue = objExcelFile.readExcel(filePath, "Amazon_data.xlsx", "itemSheet");
+        data = objExcelFile.readExcel(filePath, "Amazon_data.xlsx", "itemSheet");
 
     }
 
 
     @Test
-    public void verifyAmazonApplicationItemPurchase() {
+    public void verifyAmazonApplicationItemPurchase(Method method) {
 
-        Log.startTestCase("verifyEbayApplicationItemPurchase");
+        ExtentTestManager.startTest(method.getName(), "verify AmazonApplication Item Purchase");
+
+
+        Log.startTestCase("verifyAmazonApplicationItemPurchase");
 
         loginToAmazon();
 
@@ -64,10 +70,10 @@ public class AmazonApplication extends MobileBaseUtility {
         LoginPage login = new LoginPage(driver);
         login.gotoLoginPage().click();
         login.enterUser().click();
-        login.enterUser().sendKeys(username);
+        login.enterUser().sendKeys(data.get(3));
         login.clickContinue().click();
         login.enterPassword().click();
-        login.enterPassword().sendKeys(password);
+        login.enterPassword().sendKeys(data.get(4));
         login.loginToAmazon().click();
     }
 
@@ -79,8 +85,9 @@ public class AmazonApplication extends MobileBaseUtility {
         SearchResult searchResult = new SearchResult(driver);
         Boolean condition = searchResult.searchElement().isDisplayed();
         Assert.assertTrue(condition);
+        Action.verticalSwipe(250, 380);
         searchResult.searchElement().click();
-        searchResult.searchElement().sendKeys(itemValue);
+        searchResult.searchElement().sendKeys(data.get(5));
         searchResult.pickItem().click();
         Boolean buyCondition = searchResult.checkBuyingOption().isDisplayed();
         Assert.assertTrue(buyCondition);

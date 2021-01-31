@@ -9,19 +9,17 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SearchResult {
 
-    AppiumDriver driver;
-
     private final String searchBoxLocate = "rs_search_src_text";
     private final String lastRecordLocate = "//android.view.View[contains(@text,'Sceptre')][1]";
     private final String seeAllLocate = "rs_search_src_text";
-
+    AppiumDriver driver;
     @FindBy(id = searchBoxLocate)
     MobileElement searchBox;
 
     @FindBy(xpath = lastRecordLocate)
     MobileElement lastRecord;
 
-    @FindBy(xpath = seeAllLocate)
+    @FindBy(id = seeAllLocate)
     MobileElement seeAllBuyingOption;
 
 

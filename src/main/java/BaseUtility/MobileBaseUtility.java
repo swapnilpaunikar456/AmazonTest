@@ -11,7 +11,6 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -24,6 +23,9 @@ public class MobileBaseUtility {
     protected static AppiumDriver driver;
     protected static WebDriverWait wait;
 
+    public AppiumDriver getDriver() {
+        return driver;
+    }
 
     //Before Class Annotation makes java function to run every time before a TestNG Test class
     @BeforeClass
@@ -63,7 +65,6 @@ public class MobileBaseUtility {
         }
     }
 
-
     //After Class Annotation makes java function to run every time after a TestNG Test class
     @AfterSuite
     public void End() {
@@ -86,5 +87,6 @@ public class MobileBaseUtility {
             System.out.println(e);
         }
     }
+
 }
 

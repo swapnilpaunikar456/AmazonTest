@@ -9,6 +9,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ReadFromExcel {
@@ -21,7 +23,9 @@ public class ReadFromExcel {
      * params : fileName - name of the file
      * params : sheetName - name of the sheet
      */
-    public String readExcel(String filePath, String fileName, String sheetName) throws IOException {
+    public List readExcel(String filePath, String fileName, String sheetName) throws IOException {
+
+        List<String> data = new ArrayList<>();
 
         //Create an object of File class to open xlsx file
 
@@ -77,13 +81,13 @@ public class ReadFromExcel {
 
                 //Print Excel data in console
 
-                rowValue = (row.getCell(j).getStringCellValue());
+                data.add((row.getCell(j).getStringCellValue()));
 
             }
 
         }
 
-        return rowValue;
+        return data;
 
     }
 

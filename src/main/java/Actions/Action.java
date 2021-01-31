@@ -23,9 +23,9 @@ public class Action extends MobileBaseUtility {
     }
 
     /*
-    * This function used to swipe vertically based on percentage
-    * params : startpercentage - starting percentage
-    * params : endpercentage - End percentage
+     * This function used to swipe vertically based on percentage
+     * params : startpercentage - starting percentage
+     * params : endpercentage - End percentage
      */
     public static void verticalSwipe(double startpercentage, double endpercentage) {
 
