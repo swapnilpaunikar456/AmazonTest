@@ -18,9 +18,9 @@ import java.util.Date;
 public class Screenshot extends MobileBaseUtility {
 
     /*
-    * This method will used to get screenshot and save in given location
-    * params : driver - webdriver instance require to to reference variable of TakesScreenshot
-    * params : screenshotName - this will use as filename
+     * This method will used to get screenshot and save in given location
+     * params : driver - webdriver instance require to to reference variable of TakesScreenshot
+     * params : screenshotName - this will use as filename
      */
     public static String getScreenshot(WebDriver driver, String screenshotName) throws IOException {
 
