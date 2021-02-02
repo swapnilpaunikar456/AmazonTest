@@ -57,6 +57,9 @@ public class TestListener extends MobileBaseUtility implements ITestListener {
         //ExtentReports log and screenshot operations for failed tests.
         ExtentTestManager.getTest().log(LogStatus.FAIL, "Test Failed",
                 ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
+
+        ExtentTestManager.getTest().log(LogStatus.FAIL, "Test Case Failed is "+iTestResult.getName());
+        ExtentTestManager.getTest().log(LogStatus.FAIL, "Test Case Failed is "+iTestResult.getThrowable());
     }
 
     @Override

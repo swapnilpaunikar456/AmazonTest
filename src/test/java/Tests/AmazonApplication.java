@@ -5,6 +5,7 @@ import BaseUtility.MobileBaseUtility;
 import BaseUtility.ReadFromExcel;
 import Pages.LoginPage;
 import Pages.SearchResult;
+import com.relevantcodes.extentreports.LogStatus;
 import genralized_utillity.ExtentReport.ExtentTestManager;
 import genralized_utillity.Log4j.Log;
 import org.testng.Assert;
@@ -47,16 +48,17 @@ public class AmazonApplication extends MobileBaseUtility {
 
         ExtentTestManager.startTest(method.getName(), "verify AmazonApplication Item Purchase");
 
+        ExtentTestManager.getTest().log(LogStatus.INFO,"Launch the Application");
 
         Log.startTestCase("verifyAmazonApplicationItemPurchase");
 
         loginToAmazon();
 
-        Log.info("Login to amazon application");
+        ExtentTestManager.getTest().log(LogStatus.INFO,"Login to amazon application");
 
         purchaseItem();
 
-        Log.info("search and purchase item");
+        ExtentTestManager.getTest().log(LogStatus.INFO,"search and purchase item");
 
         Log.endTestCase();
 
