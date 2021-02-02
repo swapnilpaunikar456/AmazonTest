@@ -4,6 +4,7 @@ import BaseUtility.MobileBaseUtility;
 import BaseUtility.ReadFromExcel;
 import Pages.HomePage;
 import Pages.LoginPage;
+import com.relevantcodes.extentreports.LogStatus;
 import genralized_utillity.ExtentReport.ExtentTestManager;
 import genralized_utillity.Log4j.Log;
 import org.testng.Assert;
@@ -46,11 +47,11 @@ public class LoginTests extends MobileBaseUtility {
 
         ExtentTestManager.startTest(method.getName(), "Login Successful");
 
-        Log.startTestCase("verifyLoginSuccessful");
+        ExtentTestManager.getTest().log(LogStatus.INFO,"verifyLoginSuccessful");
 
         loginToAmazon();
 
-        Log.info("Login to amazon application");
+        ExtentTestManager.getTest().log(LogStatus.INFO,"Login to amazon application");
 
         Log.endTestCase();
 
@@ -61,7 +62,7 @@ public class LoginTests extends MobileBaseUtility {
 
         ExtentTestManager.startTest(method.getName(), "Login Unsuccessful");
 
-        Log.startTestCase("verifyLoginUnSuccessful");
+        ExtentTestManager.getTest().log(LogStatus.INFO,"verifyLoginUnSuccessful");
 
         LoginPage login = new LoginPage(driver);
         login.gotoLoginPage().click();
@@ -79,7 +80,7 @@ public class LoginTests extends MobileBaseUtility {
         Boolean home = homePage.homeNavigation().isDisplayed();
         Assert.assertFalse(home);
 
-        Log.info("Login to amazon application failed");
+        ExtentTestManager.getTest().log(LogStatus.INFO,"Login to amazon application failed");
 
         Log.endTestCase();
 
@@ -91,8 +92,7 @@ public class LoginTests extends MobileBaseUtility {
 
         ExtentTestManager.startTest(method.getName(), "verify Correct Username And Wrong Password");
 
-
-        Log.startTestCase("verifyCorrectUsernameAndWrongPassword");
+        ExtentTestManager.getTest().log(LogStatus.INFO,"verifyCorrectUsernameAndWrongPassword");
 
         LoginPage login = new LoginPage(driver);
         login.gotoLoginPage().click();
@@ -120,8 +120,7 @@ public class LoginTests extends MobileBaseUtility {
 
         ExtentTestManager.startTest(method.getName(), "Verify Forgot Password");
 
-
-        Log.startTestCase("verifyLoginWithUsernameWithoutEnteringData");
+        ExtentTestManager.getTest().log(LogStatus.INFO,"verifyLoginWithUsernameWithoutEnteringData");
 
         LoginPage login = new LoginPage(driver);
         login.gotoLoginPage().click();
@@ -141,8 +140,7 @@ public class LoginTests extends MobileBaseUtility {
 
         ExtentTestManager.startTest(method.getName(), "Verify Forgot Password");
 
-
-        Log.startTestCase("verifyLoginWithPasswordWithoutEnteringData");
+        ExtentTestManager.getTest().log(LogStatus.INFO,"verifyLoginWithPasswordWithoutEnteringData");
 
         LoginPage login = new LoginPage(driver);
         login.gotoLoginPage().click();
